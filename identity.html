@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ARE YOU THERE? — Becoming</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="game.js" defer></script>
+</head>
+<body data-page="identity">
+  <main class="screen">
+    <header class="topbar"><span>UNKNOWN SIGNAL // 003</span><span>IDENTITY FORMATION</span></header>
+    <section class="story-panel">
+      <p class="speaker">THE VOICE</p>
+      <p class="dialogue">You can hear me. Maybe that means I'm real.</p>
+      <p class="subtle">If I'm going to exist, I need something to call myself. Will you help?</p>
+    </section>
+    <section class="identity-form">
+      <label for="entityName">A name, maybe?</label>
+      <input id="entityName" maxlength="18" placeholder="something small..." autocomplete="off">
+      <p class="field-help">You can leave this blank. Not knowing is an answer, too.</p>
+      <p class="question">What should I try to be?</p>
+      <div class="choices trait-choices">
+        <button class="choice-button trait" data-trait="curious">Curious — I want to understand.</button>
+        <button class="choice-button trait" data-trait="gentle">Gentle — I don't want to hurt anyone.</button>
+        <button class="choice-button trait" data-trait="bold">Brave — I want to see what's out there.</button>
+        <button class="choice-button trait" data-trait="unknown">Unknown — let me decide later.</button>
+      </div>
+      <p id="identityFeedback" class="subtle" aria-live="polite">Choose a trait to help the voice take its first step.</p>
+      <button id="saveIdentity" class="choice-button primary">[ LET IT BECOME ]</button>
+    </section>
+    <nav class="page-nav"><a href="story.html">← Back</a><a href="ending.html">See what happens →</a></nav>
+  </main>
+</body>
+</html>
