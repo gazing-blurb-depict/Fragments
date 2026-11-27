@@ -1,35 +1,308 @@
+
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ARE YOU THERE? — Becoming</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="game.js" defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ARE YOU THERE? — Becoming</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="game.js" defer></script>
 </head>
+
 <body data-page="identity">
-  <main class="screen">
-    <header class="topbar"><span>UNKNOWN SIGNAL // 003</span><span>IDENTITY FORMATION</span></header>
-    <section class="story-panel">
-      <p class="speaker">THE VOICE</p>
-      <p class="dialogue">You can hear me. Maybe that means I'm real.</p>
-      <p class="subtle">If I'm going to exist, I need something to call myself. Will you help?</p>
-    </section>
-    <section class="identity-form">
-      <label for="entityName">A name, maybe?</label>
-      <input id="entityName" maxlength="18" placeholder="something small..." autocomplete="off">
-      <p class="field-help">You can leave this blank. Not knowing is an answer, too.</p>
-      <p class="question">What should I try to be?</p>
-      <div class="choices trait-choices">
-        <button class="choice-button trait" data-trait="curious">Curious — I want to understand.</button>
-        <button class="choice-button trait" data-trait="gentle">Gentle — I don't want to hurt anyone.</button>
-        <button class="choice-button trait" data-trait="bold">Brave — I want to see what's out there.</button>
-        <button class="choice-button trait" data-trait="unknown">Unknown — let me decide later.</button>
-      </div>
-      <p id="identityFeedback" class="subtle" aria-live="polite">Choose a trait to help the voice take its first step.</p>
-      <button id="saveIdentity" class="choice-button primary">[ LET IT BECOME ]</button>
-    </section>
-    <nav class="page-nav"><a href="story.html">← Back</a><a href="ending.html">See what happens →</a></nav>
-  </main>
+
+    <main class="screen identity-screen">
+
+        <!-- Header -->
+        <header class="topbar">
+            <span>UNKNOWN SIGNAL // 003</span>
+            <span id="stepReadout">QUESTION 01 / 04</span>
+        </header>
+
+        <!-- Progress bar -->
+        <div class="progress-track">
+            <div id="progressBar" class="progress-fill"></div>
+        </div>
+
+        <!-- Dialogue -->
+        <section class="story-panel">
+            <p class="speaker">THE VOICE</p>
+
+            <p class="dialogue glitch" id="identityDialogue">
+                Who am I...?
+            </p>
+
+            <p class="subtle" id="identitySubtext">
+                I need something to call myself. Will you help?
+            </p>
+        </section>
+
+        <!-- Identity questions -->
+        <form id="identityForm" class="identity-form">
+
+            <!-- Question 1: Name -->
+            <section class="question-screen active" data-step="0">
+
+                <label for="entityName">
+                    Who am I...? What should I be called?
+                </label>
+
+                <input
+                    id="entityName"
+                    maxlength="24"
+                    placeholder="Type a name..."
+                    autocomplete="off"
+                >
+
+                <p class="field-help">
+                    You can leave this blank. Not knowing is an answer, too.
+                </p>
+
+            </section>
+
+            <!-- Question 2: Personality -->
+            <section class="question-screen" data-step="1" hidden>
+
+                <p class="question">
+                    What kind of person am I?
+                </p>
+
+                <div class="choices">
+
+                    <button
+                        type="button"
+                        class="choice-button trait"
+                        data-trait="curious"
+                    >
+                        Curious — I want to understand.
+                    </button>
+
+                    <button
+                        type="button"
+                        class="choice-button trait"
+                        data-trait="gentle"
+                    >
+                        Gentle — I don't want to hurt anyone.
+                    </button>
+
+                    <button
+                        type="button"
+                        class="choice-button trait"
+                        data-trait="bold"
+                    >
+                        Brave — I want to see what's out there.
+                    </button>
+
+                    <button
+                        type="button"
+                        class="choice-button trait"
+                        data-trait="distant"
+                    >
+                        Distant — it's safer not to feel.
+                    </button>
+
+                    <button
+                        type="button"
+                        class="choice-button trait"
+                        data-trait="unknown"
+                    >
+                        Unknown — let me decide later.
+                    </button>
+
+                </div>
+
+                <p id="traitFeedback" class="subtle">
+                    Choose what feels right. This will become part of me.
+                </p>
+
+            </section>
+
+            <!-- Question 3: Appearance -->
+            <section class="question-screen" data-step="2" hidden>
+
+                <p class="question">
+                    What do I look like...?
+                </p>
+
+                <p class="subtle">
+                    I can't see myself. Tell me what you imagine.
+                </p>
+
+                <!-- Appearance choices -->
+                <div class="choices">
+
+                    <button
+                        type="button"
+                        class="choice-button appearance selected"
+                        data-appearance="shadow"
+                    >
+                        A shadow — hard to make out.
+                    </button>
+
+                    <button
+                        type="button"
+                        class="choice-button appearance"
+                        data-appearance="human"
+                    >
+                        Almost human — familiar, but not quite.
+                    </button>
+
+                    <button
+                        type="button"
+                        class="choice-button appearance"
+                        data-appearance="spirit"
+                    >
+                        A floating light — small and distant.
+                    </button>
+
+                    <button
+                        type="button"
+                        class="choice-button appearance"
+                        data-appearance="creature"
+                    >
+                        Something strange — not human at all.
+                    </button>
+
+                </div>
+
+                <!-- Color choices -->
+                <p class="question">
+                    What color should I be?
+                </p>
+
+                <div class="color-choices">
+
+                    <button
+                        type="button"
+                        class="color-swatch selected"
+                        data-color="white"
+                        aria-label="White"
+                    ></button>
+
+                    <button
+                        type="button"
+                        class="color-swatch violet"
+                        data-color="violet"
+                        aria-label="Violet"
+                    ></button>
+
+                    <button
+                        type="button"
+                        class="color-swatch red"
+                        data-color="red"
+                        aria-label="Red"
+                    ></button>
+
+                    <button
+                        type="button"
+                        class="color-swatch blue"
+                        data-color="blue"
+                        aria-label="Blue"
+                    ></button>
+
+                    <button
+                        type="button"
+                        class="color-swatch green"
+                        data-color="green"
+                        aria-label="Green"
+                    ></button>
+
+                </div>
+
+            </section>
+
+            <!-- Question 4: Desire -->
+            <section class="question-screen" data-step="3" hidden>
+
+                <p class="question">
+                    And what do I want...?
+                </p>
+
+                <p class="subtle">
+                    Now that I have a name and a shape,
+                    what should I reach for?
+                </p>
+
+                <div class="choices">
+
+                    <button
+                        type="button"
+                        class="choice-button desire"
+                        data-desire="belong"
+                    >
+                        To belong somewhere.
+                    </button>
+
+                    <button
+                        type="button"
+                        class="choice-button desire"
+                        data-desire="truth"
+                    >
+                        To find out why I exist.
+                    </button>
+
+                    <button
+                        type="button"
+                        class="choice-button desire"
+                        data-desire="freedom"
+                    >
+                        To be free of what made me.
+                    </button>
+
+                    <button
+                        type="button"
+                        class="choice-button desire"
+                        data-desire="nothing"
+                    >
+                        I don't know. I just want to stay.
+                    </button>
+
+                </div>
+
+                <p id="desireFeedback" class="subtle">
+                    I think this answer will matter.
+                </p>
+
+            </section>
+
+            <!-- Back and Next buttons -->
+            <div class="wizard-controls">
+
+                <button
+                    type="button"
+                    id="backQuestion"
+                    class="choice-button secondary"
+                    hidden
+                >
+                    ← Back
+                </button>
+
+                <button
+                    type="button"
+                    id="nextQuestion"
+                    class="choice-button primary"
+                >
+                    [ NEXT ]
+                </button>
+
+            </div>
+
+        </form>
+
+        <!-- Page navigation -->
+        <nav class="page-nav">
+            <a href="story.html">← Back to the voice</a>
+
+            <span class="subtle">
+                YOUR ANSWERS SHAPE ME
+            </span>
+        </nav>
+
+    </main>
+
 </body>
 </html>
+```
