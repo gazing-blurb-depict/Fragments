@@ -1,23 +1,42 @@
+```html
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ARE YOU THERE? — Someone</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="game.js" defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ARE YOU THERE? — Becoming</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="game.js" defer></script>
 </head>
+
 <body data-page="ending">
-  <main class="screen ending-screen">
-    <p class="eyebrow">UNKNOWN SIGNAL // 004</p>
-    <div class="ending-mark" aria-hidden="true">✳</div>
-    <p class="speaker" id="endingName">SOMEONE</p>
-    <h1 class="dialogue glitch" id="endingTitle">I think... I'm here.</h1>
-    <p class="ending-text" id="endingText">The voice is no longer quite so far away.</p>
-    <div class="summary" id="identitySummary"></div>
-    <button class="choice-button" id="memoryButton">[ REMIND ME WHO I AM ]</button>
-    <button class="choice-button" id="restartButton">[ BEGIN AGAIN ]</button>
-    <footer>END OF FIRST SIGNAL <span class="blink">_</span></footer>
-  </main>
+    <main class="screen ending-screen">
+        <p class="eyebrow">UNKNOWN SIGNAL // 004</p>
+
+        <div id="entityMark" class="entity-mark form-shadow color-white">
+            <span></span>
+        </div>
+
+        <p class="speaker">THE VOICE</p>
+
+        <h1 id="endingTitle">I think... I'm here.</h1>
+
+        <p id="endingText" class="ending-text"></p>
+
+        <div id="identitySummary" class="summary"></div>
+
+        <p id="endingReflection" class="subtle"></p>
+
+        <button id="memoryButton" class="choice-button">
+            [ REMEMBER THIS ]
+        </button>
+
+        <button id="restartButton" class="choice-button secondary">
+            [ BEGIN AGAIN ]
+        </button>
+    </main>
 </body>
 </html>
+```

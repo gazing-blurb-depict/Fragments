@@ -1,27 +1,58 @@
+
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ARE YOU THERE? — First Contact</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="game.js" defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ARE YOU THERE? — First Contact</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="game.js" defer></script>
 </head>
+
 <body data-page="story">
-  <main class="screen">
-    <header class="topbar"><span>UNKNOWN SIGNAL // 002</span><span id="moodReadout">MOOD: UNFORMED</span></header>
-    <section class="story-panel">
-      <p class="speaker">???</p>
-      <p class="dialogue glitch" id="dialogue">I can hear something. Is that... you?</p>
-      <p class="subtle" id="reaction">The dark seems to lean closer.</p>
-    </section>
-    <section class="choices" id="storyChoices" aria-label="Choose your response">
-      <button class="choice-button" data-choice="kind">“Yes. I'm here. You're not alone.”</button>
-      <button class="choice-button" data-choice="curious">“What are you?”</button>
-      <button class="choice-button" data-choice="cold">“I don't know. What do you want?”</button>
-      <button class="choice-button" data-choice="silent">...</button>
-    </section>
-    <nav class="page-nav"><a href="index.html">← Restart screen</a><a class="next-link" href="identity.html">Continue →</a></nav>
-  </main>
+    <main class="screen">
+        <header class="topbar">
+            <span>UNKNOWN SIGNAL // 002</span>
+            <span id="moodReadout">MOOD: UNFORMED</span>
+        </header>
+
+        <section class="story-panel">
+            <p class="speaker">???</p>
+
+            <p class="dialogue glitch" id="dialogue">
+                I can hear something. Hello?
+            </p>
+
+            <p class="subtle" id="reaction">
+                The dark seems to lean closer.
+            </p>
+        </section>
+
+        <section class="choices">
+            <button class="choice-button" data-choice="kind">
+                “Yes. I'm here. You're not alone.”
+            </button>
+
+            <button class="choice-button" data-choice="curious">
+                “Who are you?”
+            </button>
+
+            <button class="choice-button" data-choice="cold">
+                “What do you want?”
+            </button>
+
+            <button class="choice-button" data-choice="silent">
+                ...
+            </button>
+        </section>
+
+        <nav class="page-nav">
+            <a href="index.html">← Restart screen</a>
+            <a class="next-link" href="identity.html">Continue →</a>
+        </nav>
+    </main>
 </body>
 </html>
+```
